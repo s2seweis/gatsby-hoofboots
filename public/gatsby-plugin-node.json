@@ -1,0 +1,72 @@
+{
+  "paths": [
+    {
+      "path": "/dev-404-page/"
+    },
+    {
+      "path": "/404/"
+    },
+    {
+      "path": "/404.html"
+    },
+    {
+      "path": "/email-bestaetigen/"
+    },
+    {
+      "path": "/email-bestaetigt/"
+    },
+    {
+      "path": "/email-versandt/"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "path": "/login/"
+    },
+    {
+      "path": "/los/"
+    },
+    {
+      "path": "/neues-passwort-vergeben/"
+    },
+    {
+      "path": "/neues-pferd/"
+    },
+    {
+      "path": "/passwort-zuruecksetzen/"
+    },
+    {
+      "path": "/profil/"
+    },
+    {
+      "path": "/ueber-uns/"
+    },
+    {
+      "matchPath": "/bearbeiten/:id",
+      "path": "/bearbeiten/[id]/"
+    },
+    {
+      "matchPath": "/pferde/:id/allgemeines",
+      "path": "/pferde/[id]/allgemeines/"
+    },
+    {
+      "matchPath": "/pferde/:id/besonderheiten",
+      "path": "/pferde/[id]/besonderheiten/"
+    },
+    {
+      "matchPath": "/pferde/:id",
+      "path": "/pferde/[id]/"
+    },
+    {
+      "matchPath": "/pferde/:id/kamera",
+      "path": "/pferde/[id]/kamera/"
+    },
+    {
+      "matchPath": "/pferde/:id/photo-guide",
+      "path": "/pferde/[id]/photo-guide/"
+    }
+  ],
+  "redirects": [],
+  "pathPrefix": ""
+}
