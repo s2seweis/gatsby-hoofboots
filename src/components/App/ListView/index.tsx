@@ -13,7 +13,9 @@ import { ModalData } from "./AddHorseModal/ModalData";
  */
 function ListViewComponent({ cms }: { cms: any }) {
   const user = useSelector((state: RootState) => state.auth.user);
+  const user2 = useSelector((state: RootState) => state.auth);
   console.log("line:100", user);
+  console.log("line:101", user2);
   
 
   const { data: horseData } = useHorsesQuery(user?.id as string, {

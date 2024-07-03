@@ -1,44 +1,49 @@
 import React, { useEffect } from "react";
-import { navigate } from "gatsby";
-import axios from 'axios';
 import Layout from "../components/Layout";
+import { login } from "../services/auth";
 import { AuthBox } from "../components/AuthBox";
+import queryString from 'query-string';
+import { navigate } from "gatsby";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../redux/auth/authSlice";
 
 export default function LoginPage() {
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log("line:800", urlParams);
-  const code = urlParams.get('code');
-  console.log("line:801", code);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const exchangeCodeForToken = async (authCode) => {
-      try {
-        const response = await axios.post('http://localhost:3210/v1/auth/google/callback', { code: authCode });
-        const { access_token, id_token } = response.data;
+    const parsed = queryString.parse(window.location.search);
 
-        if (access_token) {
-          localStorage.setItem('accessToken', access_token);
-          localStorage.setItem('idToken', id_token);
-          navigate('/dashboard');
-        } else {
-          console.error('No tokens received');
-        }
-      } catch (error) {
-        console.error('Error exchanging code for token:', error);
+    // Combine the tokens into the desired object format
+    const tokens = {
+      access: {
+        token: parsed.accessToken,
+        expires: parsed.accessExpires
+      },
+      refresh: {
+        token: parsed.refreshToken,
+        expires: parsed.refreshExpires
       }
     };
 
-    if (code) {
-      exchangeCodeForToken(code);
-    } else {
-      console.log("No code found in the URL");
+    const user = parsed.user ? JSON.parse(parsed.user) : null;
+    const horses = parsed.horses ? JSON.parse(parsed.horses) : null;
+
+    console.log("Tokens:", tokens);
+    console.log("User:", user);
+    console.log("Horses:", horses);
+
+    // Dispatch the credentials to the Redux store if necessary
+    if (user && tokens) {
+      dispatch(setCredentials({ user, tokens }));
     }
-  }, [code]);
+
+    // Navigate to the splashscreen if necessary
+    // navigate("/splashscreen");
+  }, [dispatch]);
 
   return (
     <Layout>
       <AuthBox mode={"login"} />
-      {code && <div>Processing authentication...</div>}
     </Layout>
   );
 }

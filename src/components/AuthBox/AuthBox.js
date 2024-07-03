@@ -94,6 +94,8 @@ export default function AuthBoxComponent({ mode = "login" }) {
         }
 
         const { user, tokens } = result.data;
+        console.log("line:660", user);
+        console.log("line:661", tokens);
 
         await navigate(routes.splashscreen);
         dispatch(setCredentials({ user, tokens }));
