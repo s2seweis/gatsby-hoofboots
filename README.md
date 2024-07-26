@@ -34,4 +34,9 @@ Run the development server and visit http://localhost:3000/v1/docs/
 - [Gatsby](https://www.gatsbyjs.com/)
 - [react-redux](https://react-redux.js.org/)
 
-# Test Push
+## Open tasks:
+1. Deploying: Server, Strapi, Gatsby, Clean up mango DB Database, Deploy MYSQL DB
+2. Deployment with AWS?
+3. Https certificate 
+
+
